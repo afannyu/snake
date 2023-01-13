@@ -123,7 +123,7 @@ class GameControl {
     // 吃到食物了
     if (X === this.food.X && Y === this.food.Y) {
       // 食物位置重置
-      this.food.change()
+      this.food.change(this.snack.bodies)
       // 分数增加
       this.scorePanel.addScore()
       // 蛇身体增加
@@ -133,4 +133,3 @@ class GameControl {
 }
 
 export default GameControl
-

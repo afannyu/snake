@@ -30,11 +30,6 @@ export default class Snake {
     if (this.X === value) {
       return
     }
-    // // 判断是否撞墙
-    if (value < 0 || value > 290) {
-      // 撞墙了，则蛇死了
-      throw new Error('蛇撞墙了！')
-    }
 
     // 修改X时，是修改水平坐标，蛇向左移动时 不能向右掉头（只有一节头的时候可以）
     if (
@@ -52,6 +47,11 @@ export default class Snake {
       }
     }
 
+    if (value < 0 || value > 290) {
+      // 撞墙了，则蛇死了
+      throw new Error('蛇撞墙了！')
+    }
+
     // 移动身体
     this.moveBody()
 
@@ -59,6 +59,8 @@ export default class Snake {
 
     // 检查是否撞到自己
     this.checkHeadBody()
+
+    return
   }
 
   // 获取蛇的坐标（蛇头坐标） Y轴
@@ -68,17 +70,9 @@ export default class Snake {
 
   // 设置蛇的坐标（蛇头坐标） Y轴
   set Y(value: number) {
-    // 新值和旧值一样，不需要修改
     if (this.Y === value) return
-    if (value < 0 || value > 290) {
-      // 撞墙了，则蛇死了
-      throw new Error('蛇撞墙了！')
-    }
 
-    // 修改Y时，是修改垂直坐标，蛇向上移动时 不能向下掉头（只有一节头的时候可以）
     if (this.bodies[1] && (this.bodies[1] as HTMLElement).offsetTop === value) {
-      // console.log('水平掉头了')
-      // 发生掉头，蛇继续反方向移动
       if (value > this.Y) {
         // 如果新值大于旧值，这说明蛇在下走，应该向上走的
         value = this.Y - 10
@@ -88,12 +82,18 @@ export default class Snake {
       }
     }
 
+    if (value < 0 || value > 290) {
+      throw new Error('蛇撞墙了！')
+    }
+
     // 移动身体
     this.moveBody()
     this.head.style.top = value + 'px'
 
     // 检查是否撞到自己
     this.checkHeadBody()
+
+    return
   }
 
   // 蛇吃到食物增加身体的长度（增加一个div）

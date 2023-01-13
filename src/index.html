@@ -2,34 +2,39 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>贪吃蛇</title>
 </head>
 
 <body>
-  <!--游戏主窗口-->
+  <!-- 创建游戏主容器 -->
   <div id="main">
-    <!--游戏舞台-->
+    <!-- 游戏地方 -->
     <div id="stage">
-      <!--  设置蛇身体-->
+      <!-- 设置蛇 -->
       <div id="snake">
-        <!-- snack 内部的盒子 表示蛇的身体各部分-->
-        <!--  设置蛇的样式-->
-        <div></div>
+        <!-- snake内部的div表示蛇各部分 -->
+        <div>
+        </div>
+
+
       </div>
-      <!-- 设置食物-->
+      <!-- 设置食物 -->
       <div id="food">
-        <!--设计食物样式-->
+        <!-- 设置4个div  写食物的样式 -->
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
-    <!--  游戏记分牌-->
     <div id="score-panel">
-      <div>SCORE:<span id="score">0</span></div>
-      <div>level:<span id="level">1</span></div>
+      <div>得分:<span id="score">0</span></div>
+      <button id="game" onclick="javascript: location.reload()">重新开始游戏</button>
+      <div>等级:<span id="level">1</spani>
+      </div>
     </div>
   </div>
 </body>
